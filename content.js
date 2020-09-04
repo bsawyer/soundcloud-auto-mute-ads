@@ -3,14 +3,17 @@ const volumeButton = document.querySelector('.volume__button');
 const volume = document.querySelector('.volume');
 
 const observer = new MutationObserver(()=>{
+  console.log(`play controls mutation observed`);
     const {display} = window.getComputedStyle(playControlsPanel);
     if(display === 'none'){
       if(volume.classList.contains('.muted')){
+        console.log(`unmuting`);
         volumeButton.click();
       }
     }else{
       if(!volume.classList.contains('.muted')){
         volumeButton.click();
+        console.log(`muting`);
       }
     }
 });
@@ -31,4 +34,4 @@ function pollForDismiss(){
 
 pollForDismiss();
 
-console.log(`running soundcloud add muter`);
+console.log(`running soundcloud auto mute ads`);
